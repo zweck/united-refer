@@ -1,0 +1,39 @@
+page-login {
+  .scroll-content{
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+
+    .logo{
+      text-align: center;
+      margin-bottom: 2rem;
+      img{
+        width: 41.66667%;
+        max-width: 100%;
+        height: auto;
+        border: 0;
+      }
+      p{
+        font-size: 9.6px;
+        color: #fff;
+      }
+    }
+
+    .forgot-link {
+      font-size: 12px;
+      margin-bottom: 1rem;
+      background-color: rgba(0,0,0,.375);
+      border-radius: .15rem;
+      color: #aaa;
+      display: block;
+      padding: .6rem 1em;
+      text-decoration: none;
+      text-align: center;
+      line-height: 1.125rem;
+    }
+
+    form {
+      min-height: auto !important;
+    }
+  }
+}

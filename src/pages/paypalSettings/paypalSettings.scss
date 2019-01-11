@@ -1,0 +1,39 @@
+page-paypal-settings{
+  .scroll-content{
+    background-color: #EFEFEF;
+    background-image: none;
+    padding: 1rem;
+  }
+
+  .fa-cc-paypal {
+    color: #4A90E2;
+  }
+
+  .logo{
+    margin: 1em 1em;
+    width: 70%
+  }
+
+  .toggle {
+    background-color: white;
+    position: relative;
+    margin-bottom: .6rem;
+    padding: .6rem;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.42857;
+    text-align: left;
+    color: #494F54;
+
+    span {
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    ion-toggle {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+    }
+  }
+}

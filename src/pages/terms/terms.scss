@@ -1,0 +1,21 @@
+page-terms {
+  .scroll-content {
+    padding: 15px;
+    background-color: #EFEFEF;
+    background-image: none;
+  }
+
+  .mine {
+    padding: 1rem;
+    font-size: 14px;
+    font-family: Lato;
+    //& > ul {
+    //  padding-left: 25px;
+    //  list-style-type: none !important;
+    //  & > li {
+    //    list-style-type: none !important;
+    //    margin-left: 0;
+    //  }
+    //}
+  }
+}

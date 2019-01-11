@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Service Categories</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div
+    class="search-container"
+  >
+    <input
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search Service Providers"
+    />
+    <i class="fa fa-search"></i>
+  </div>
+
+  <div
+    class="container"
+  >
+    <a
+      class="gray-button"
+      (click)="showFavouritesOnly()"
+    >
+      {{ onlyFavourites ? "Show All" : "Show Favourites Only" }}
+    </a>
+
+    <p
+      class="center"
+    >
+      (Expand a category, and select a Service Provider)
+    </p>
+
+    <ul class="list">
+      <li
+        *ngFor="let vendor of vendors; let i = index"
+        [attr.data-index]="i"
+        [className]="currentIndex == i ? 'active' : ''"
+        [hidden]="shouldHideVendor(vendor)"
+      >
+        <a
+          (click)="handleSectionClick(i)"
+        >
+          <i
+            class="fa fa-chevron-down"
+          ></i>
+          {{vendor.VendorCategory.name}}
+        </a>
+
+        <div [hidden]="currentIndex != i">
+          <div class="header">
+            <i
+              class="fa fa-heart"
+              (click)="addToFavourites(vendor)"
+              [ngClass]="{'fa': true, 'fa-heart-o black': !vendor.favourite, 'fa-heart red': vendor.favourite}"
+            ></i>
+            <div class="title">{{ vendor.Vendor[0].company_name }}</div>
+            <a
+              class="select-button"
+              (click)="selectVendor(vendor)"
+              [ngClass]="{'selected': selectedVendor && vendor.Vendor[0].id == selectedVendor.Vendor[0].id }"
+            >
+              select
+            </a>
+          </div>
+          <div class="blurb">{{ vendor.Vendor[0].blurb }}</div>
+          <pre class="description">{{ vendor.Vendor[0].description }}</pre>
+          <video
+            controls
+            preload="none"
+            [poster]="storage.primaryDomain + vendor.Vendor[0].video_thumb"
+            *ngIf="vendor.Vendor[0].video_url"
+          >
+            <source
+              [src]="storage.primaryDomain + vendor.Vendor[0].video_url"
+              type="video/mp4"
+            >
+            <p>Video not supported.</p>
+          </video>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</ion-content>
+
+<div
+  class="bottom-button"
+  *ngIf="selectedVendor"
+  (click)="goToReferralDetails()"
+>
+  Next
+</div>

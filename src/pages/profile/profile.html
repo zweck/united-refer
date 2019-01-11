@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Profile</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <small [hidden]="connection.online">
+    You are currently offline. For the best experience please connect to the internet.
+    <a href="#/app/offline">More Information</a>
+  </small>
+
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.registerForm"
+    id="register-form"
+    #form="ngForm"
+  >
+    <button
+      type="button"
+      class="profile-photo"
+      (click)="showImageSourceSelection()"
+    >
+      <img
+        [src]="user.profile_photo"
+      />
+    </button>
+
+    <ion-row>
+      <ion-col col-6 style="padding-left: 0">
+        <input
+          type="text"
+          placeholder="Forename"
+          [(ngModel)]="user.first_name"
+          name="first_name"
+          required
+          [pattern]="onlyLettersRegEx"
+          #firstName="ngModel"
+        >
+        <div role="alert" [hidden]="!(firstName.invalid && (firstName.dirty || firstName.touched || submited))">
+          <div [hidden]="!firstName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!firstName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+      <ion-col col-6 style="padding-right: 0">
+        <input
+          type="text"
+          placeholder="Surname"
+          [(ngModel)]="user.last_name"
+          name="last_name"
+          required
+          [pattern]="onlyLettersRegEx"
+          #surName="ngModel"
+        >
+        <div role="alert" [hidden]="!(surName.invalid && (surName.dirty || surName.touched || submited))">
+          <div [hidden]="!surName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!surName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <input
+      type="text"
+      placeholder="Email Address"
+      [(ngModel)]="user.email_address"
+      name="email_address"
+      required
+      [pattern]="emailRegEx"
+      #email="ngModel"
+    >
+    <div role="alert" [hidden]="!(email.invalid && (email.dirty || email.touched || submited))">
+      <div [hidden]="!email.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!email.hasError('pattern')" class="error">Please enter a valid email address.</div>
+    </div>
+
+
+    <input
+      type="tel"
+      placeholder="Mobile"
+      [(ngModel)]="user.mobile"
+      name="mobile"
+      required
+      [pattern]="phoneRegEx"
+      #mobile="ngModel"
+    >
+    <div role="alert" [hidden]="!(mobile.invalid && (mobile.dirty || mobile.touched || submited))">
+      <div [hidden]="!mobile.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!mobile.hasError('pattern')" class="error">Please enter a valid phone number.</div>
+    </div>
+
+
+    <input
+      type="text"
+      placeholder="Company"
+      [(ngModel)]="user.company"
+      name="company"
+      #company="ngModel"
+    >
+
+    <div
+      class="form-label"
+    >
+      Password
+    </div>
+
+    <input
+      type="password"
+      placeholder="Current Password"
+      [(ngModel)]="user.current_password"
+      name="current_password"
+      #current_password="ngModel"
+    >
+
+    <input
+      type="password"
+      placeholder="New Password"
+      [(ngModel)]="user.new_password"
+      name="new_password"
+      #new_password="ngModel"
+    >
+
+    <input
+      type="password"
+      placeholder="Confirm New Password"
+      [(ngModel)]="user.new_password_confirmation"
+      name="new_password_confirmation"
+      #new_password_confirmation="ngModel"
+    >
+
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+      style="margin-top: 20px"
+    >
+      Update
+    </button>
+
+  </form>
+</ion-content>

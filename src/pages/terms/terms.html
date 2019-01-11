@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Terms of Service</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div
+    class="mine"
+    [innerHTML]="tos | safeHtml"
+  ></div>
+</ion-content>

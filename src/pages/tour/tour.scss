@@ -1,0 +1,43 @@
+page-tour {
+  .swiper-pagination-bullet {
+    background: #fff;
+    .swiper-pagination-bullet-active {
+      background: white;
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 500;
+    font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: .875rem;
+    color: white;
+    font-weight: 500;
+    font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+    line-height: 1.2;
+    padding-top: 10px;
+    padding-right: 4rem;
+    padding-left: 4rem;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+  }
+
+  img {
+    width: 61.3333% !important;
+    margin-bottom: 30px;
+  }
+}

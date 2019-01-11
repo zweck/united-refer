@@ -1,0 +1,202 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Referral Details</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.registerForm"
+    id="register-form"
+    #form="ngForm"
+  >
+    <div class="form-label">Basic info</div>
+
+    <ion-row>
+      <ion-col col-6 style="padding-left: 0">
+        <input
+          type="text"
+          placeholder="Forename*"
+          [(ngModel)]="lead.first_name"
+          name="firstname"
+          required
+          [pattern]="onlyLettersRegEx"
+          #firstName="ngModel"
+        >
+        <div role="alert" [hidden]="!(firstName.invalid && (firstName.dirty || firstName.touched || submited))">
+          <div [hidden]="!firstName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!firstName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+      <ion-col col-6 style="padding-right: 0">
+        <input
+          type="text"
+          placeholder="Surname*"
+          [(ngModel)]="lead.last_name"
+          name="surname"
+          required
+          [pattern]="onlyLettersRegEx"
+          #surName="ngModel"
+        >
+        <div role="alert" [hidden]="!(surName.invalid && (surName.dirty || surName.touched || submited))">
+          <div [hidden]="!surName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!surName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <input
+      type="text"
+      placeholder="Company Name"
+      [(ngModel)]="lead.company"
+      name="company"
+      #company="ngModel"
+    >
+
+    <input
+      type="text"
+      placeholder="Email Address*"
+      [(ngModel)]="lead.email_address"
+      name="email"
+      required
+      [pattern]="emailRegEx"
+      #email="ngModel"
+    >
+    <div role="alert" [hidden]="!(email.invalid && (email.dirty || email.touched || submited))">
+      <div [hidden]="!email.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!email.hasError('pattern')" class="error">Please enter a valid email address.</div>
+    </div>
+
+    <input
+      type="tel"
+      placeholder="Mobile Number*"
+      [(ngModel)]="lead.mobile"
+      name="mobile"
+      required
+      [pattern]="phoneRegEx"
+      #mobile="ngModel"
+    >
+    <div role="alert" [hidden]="!(mobile.invalid && (mobile.dirty || mobile.touched || submited))">
+      <div [hidden]="!mobile.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!mobile.hasError('pattern')" class="error">Please enter a valid phone number.</div>
+    </div>
+
+    <input
+      type="tel"
+      placeholder="Phone Number*"
+      [(ngModel)]="lead.phone"
+      name="phone"
+      required
+      [pattern]="phoneRegEx"
+      #phone="ngModel"
+    >
+    <div role="alert" [hidden]="!(phone.invalid && (phone.dirty || phone.touched || submited))">
+      <div [hidden]="!phone.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!phone.hasError('pattern')" class="error">Please enter a valid phone number.</div>
+    </div>
+
+    <div class="form-label">Address info</div>
+
+    <input
+      type="text"
+      placeholder="Address line 1*"
+      [(ngModel)]="lead.address1"
+      name="address1"
+      required
+      [pattern]="onlyLettersRegEx"
+      #address1="ngModel"
+    >
+    <div role="alert" [hidden]="!(address1.invalid && (address1.dirty || address1.touched || submited))">
+      <div [hidden]="!address1.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!address1.hasError('pattern')" class="error">Please enter letters only.</div>
+    </div>
+
+    <input
+      type="text"
+      placeholder="Address line 2"
+      [(ngModel)]="lead.address2"
+      name="address2"
+      [pattern]="onlyLettersRegEx"
+      #address2="ngModel"
+    >
+    <div role="alert" [hidden]="!(address2.invalid && (address2.dirty || address2.touched || submited))">
+      <div [hidden]="!address2.hasError('pattern')" class="error">Please enter letters only.</div>
+    </div>
+
+    <input
+      type="text"
+      placeholder="Town"
+      [(ngModel)]="lead.town"
+      name="town"
+      required
+      [pattern]="onlyLettersRegEx"
+      #town="ngModel"
+    >
+    <div role="alert" [hidden]="!(town.invalid && (town.dirty || town.touched || submited))">
+      <div [hidden]="!town.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!town.hasError('pattern')" class="error">Please enter letters only.</div>
+    </div>
+
+    <input
+      type="text"
+      placeholder="Country"
+      [(ngModel)]="lead.country"
+      name="country"
+      required
+      [pattern]="onlyLettersRegEx"
+      #country="ngModel"
+    >
+    <div role="alert" [hidden]="!(country.invalid && (country.dirty || country.touched || submited))">
+      <div [hidden]="!country.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!country.hasError('pattern')" class="error">Please enter letters only.</div>
+    </div>
+
+    <input
+      type="text"
+      placeholder="Postcode*"
+      [(ngModel)]="lead.postcode"
+      name="postcode"
+      required
+      [pattern]="postcodeRegEx"
+      #postcode="ngModel"
+    >
+    <div role="alert" [hidden]="!(postcode.invalid && (postcode.dirty || postcode.touched || submited))">
+      <div [hidden]="!postcode.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!postcode.hasError('pattern')" class="error">Please enter a valid UK postcode.</div>
+    </div>
+
+    <div class="form-label">Additional info</div>
+
+    <div *ngFor="let question of additional">
+      <div
+        class="question"
+      >
+        <div
+          class="question"
+        >
+          {{ question.question }}
+        </div>
+
+            <select>
+              <option *ngFor="let answer of question.additional">{{answer}}</option>
+            </select>
+
+      </div>
+    </div>
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+    >
+      Add Referral
+    </button>
+
+  </form>
+</ion-content>

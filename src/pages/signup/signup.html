@@ -1,0 +1,147 @@
+<ion-header></ion-header>
+
+<ion-content city-bg>
+  <div class="logo">
+    <img src="assets/imgs/catex-logo.png">
+    <p>The professional referral app</p>
+  </div>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.registerForm"
+    id="register-form"
+    #form="ngForm"
+  >
+    <ion-row>
+      <ion-col col-6 style="padding-left: 0">
+        <input
+          type="text"
+          placeholder="Forename"
+          [(ngModel)]="user.first_name"
+          name="first_name"
+          required
+          [pattern]="onlyLettersRegEx"
+          #firstName="ngModel"
+        >
+        <div role="alert" [hidden]="!(firstName.invalid && (firstName.dirty || firstName.touched || submited))">
+          <div [hidden]="!firstName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!firstName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+      <ion-col col-6 style="padding-right: 0">
+        <input
+          type="text"
+          placeholder="Surname"
+          [(ngModel)]="user.surname"
+          name="surname"
+          required
+          [pattern]="onlyLettersRegEx"
+          #surName="ngModel"
+        >
+        <div role="alert" [hidden]="!(surName.invalid && (surName.dirty || surName.touched || submited))">
+          <div [hidden]="!surName.hasError('required')" class="error">Please enter a value.</div>
+          <div [hidden]="!surName.hasError('pattern')" class="error">Please enter letters only.</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <input
+      type="text"
+      placeholder="Email Address"
+      [(ngModel)]="user.email"
+      name="email"
+      required
+      [pattern]="emailRegEx"
+      #email="ngModel"
+    >
+    <div role="alert" [hidden]="!(email.invalid && (email.dirty || email.touched || submited))">
+      <div [hidden]="!email.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!email.hasError('pattern')" class="error">Please enter a valid email address.</div>
+    </div>
+
+
+    <input
+      type="tel"
+      placeholder="Mobile"
+      [(ngModel)]="user.mobile"
+      name="mobile"
+      required
+      [pattern]="phoneRegEx"
+      #mobile="ngModel"
+    >
+    <div role="alert" [hidden]="!(mobile.invalid && (mobile.dirty || mobile.touched || submited))">
+      <div [hidden]="!mobile.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!mobile.hasError('pattern')" class="error">Please enter a valid phone number.</div>
+    </div>
+
+
+    <input
+      type="text"
+      placeholder="Company"
+      [(ngModel)]="user.company"
+      name="company"
+      #company="ngModel"
+    >
+
+
+    <input
+      type="text"
+      placeholder="Club Code (optional)"
+      [(ngModel)]="user.club_code"
+      name="club_code"
+      #clubCode="ngModel"
+    >
+
+
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="user.password"
+      name="password"
+      required
+      #password="ngModel"
+    >
+    <div role="alert" [hidden]="!(password.invalid && (password.dirty || password.touched || submited))">
+      <div [hidden]="!password.hasError('required')" class="error">Please enter a value.</div>
+    </div>
+
+
+    <input
+      type="password"
+      placeholder="Confirm Password"
+      [(ngModel)]="user.conf_password"
+      name="conf_password"
+      required
+      #conf_password="ngModel"
+    >
+    <div role="alert" [hidden]="!((conf_password.invalid || user.password != user.conf_password) && (conf_password.dirty || conf_password.touched || submited))">
+      <div [hidden]="!conf_password.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="user.password == user.conf_password" class="error">The two passwords do not match.</div>
+    </div>
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+    >
+      Register
+    </button>
+
+    <a
+      [navPush]="termsPage"
+      href="#/app/tos"
+      class="terms-link"
+    >
+      By continuing with your registration, you are agreeing<br/> to our <span>Terms &amp; Conditions.</span>
+    </a>
+
+    <a
+      (click)="goBack()"
+      class="transparent-rounded-button"
+    >
+      cancel
+    </a>
+
+  </form>
+</ion-content>

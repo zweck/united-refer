@@ -1,0 +1,23 @@
+page-profile {
+  .scroll-content {
+    padding: 15px;
+    background-color: #EFEFEF;
+    background-image: none;
+  }
+
+  .profile-photo {
+    margin: auto auto;
+    width: 106px;
+    height: 106px;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 0;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    background-color: transparent;
+  }
+}

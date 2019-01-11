@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Notifications</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.paypalForm"
+    id="paypal-form"
+    #form="ngForm"
+  >
+
+    <p>Funds that are being processed, will only be deducted from your dashboard amount once paid</p>
+
+    <ion-list
+      radio-group
+      [(ngModel)]="user.notification_setting_id"
+      name="notification_setting_id"
+      (ngModelChange)="submit(form)"
+    >
+      <ion-item>
+        <ion-label>Send me Weekly updates</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Send me Monthly Updates</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Don't send me notifications</ion-label>
+        <ion-radio value="3"></ion-radio>
+      </ion-item>
+    </ion-list>
+  </form>
+
+</ion-content>

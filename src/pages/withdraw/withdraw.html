@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Withdraw</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <p class="header green">
+    {{user.current_balance / 100 | currency: 'GBP': true}} <br/>Pending Balance
+  </p>
+
+  <div class="outer-circle">
+    <div class="inner-circle">
+      <div class="header green summary">{{user.available_balance / 100 | currency: 'GBP': true }}</div>
+      <div class="header green logo">Available Balance</div>
+    </div>
+  </div>
+
+  <p class="header3" [hidden]="user.bank_account_token">
+    Unfortunately you cannot withdraw funds as you have not configured your HyperWallet account. Please go to <a
+    [navPush]="paypalSettingsPage">your settings</a> to finish setting up your account.
+  </p>
+
+  <p class="header3" *ngIf="user.available_balance == 0">
+    You do not have funds to withdraw. <br/>Add some referrals
+  </p>
+
+  <button
+    (click)="withdrawRequest()"
+    [disabled]="user.available_balance == 0 || !user.bank_account_token"
+  >
+    Withdraw
+  </button>
+
+  <p class="header3" ng-show="user.bank_account_token">
+    By pressing the button, we will send payment to the HyperWallet account
+  </p>
+</ion-content>

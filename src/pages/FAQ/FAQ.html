@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Frequently asked questions</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ul class="list">
+    <li
+      *ngFor="let faq of faqs; let i = index"
+      [attr.data-index]="i"
+      (click)="handleSectionClick(i)"
+      [className]="currentIndex == i ? 'active' : ''"
+    >
+      <a>
+        <i
+          [className]="currentIndex == i ? 'fa fa-minus' : 'fa fa-plus'"
+        ></i>
+        {{faq.question}}
+      </a>
+
+      <div [hidden]="currentIndex != i" [innerHTML]="faq.answer"></div>
+    </li>
+  </ul>
+</ion-content>

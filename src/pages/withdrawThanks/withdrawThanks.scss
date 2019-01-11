@@ -1,0 +1,73 @@
+page-withdraw-thanks {
+  .scroll-content{
+    .logo{
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      img{
+        width: 33.33%;
+        height: auto;
+        border: 0;
+      }
+      p{
+        font-size: 9.6px;
+        color: #fff;
+      }
+    }
+
+    .header1{
+      color: #00d1c1;
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: .4rem;
+      margin-top: 7rem;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .header2 {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #7F8A97;
+      text-align: left;
+      font-size: 12px;
+      margin-bottom: 9px;
+      position: relative;
+      padding: .8rem 2rem;
+      text-align: center;
+      .green {
+        text-decoration: underline;
+        color: #00d1c1;
+      }
+    }
+    .header3 {
+      font-weight: 700;
+      color: #7F8A97;
+      text-align: left;
+      font-size: 12px;
+      margin-bottom: 9px;
+      position: relative;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    .bottom{
+      background-color: transparent;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      border-top: .5px solid #282A2D;
+      justify-content: space-around;
+      display: flex;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-sizing: border-box;
+      .transparent-rounded-button {
+        background-color: transparent;
+        border: .5px solid #282A2D;
+        color: #282A2D;
+      }
+    }
+
+  }
+}

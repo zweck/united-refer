@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Withdrawal History</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <!--<small class="alert text-center mb3 bg-silver black rounded block" ng-show="!connection.online">-->
+    <!--You are currently offline. For the best experience please connect to the internet. <a-->
+    <!--href="#/app/offline">More Information</a>-->
+  <!--</small>-->
+
+  <section>
+    <ul>
+      <li
+        (click)="openFilters()"
+      >
+        <a>
+          Filter
+          <span *ngIf="date_range_id == 1">(This Week)</span>
+          <span *ngIf="date_range_id == 2">(This Month)</span>
+          <span *ngIf="date_range_id == 4">(3 Months)</span>
+          <span *ngIf="date_range_id == 3">(This Year)</span>
+
+          <span class="fa fa-chevron-right"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <div
+    class="form-label"
+  >
+    total earned
+    <div
+      class="right"
+    >
+      {{current_user.total_earned / 100 | currency: 'GBP': true}}
+    </div>
+  </div>
+
+  <div *ngFor="let lead of earnings">
+    <section>
+      <ul>
+        <li class="item">
+          <div class="added">Date Requested: {{ moment(lead['Transaction']['created_on'], "YYYY-MM-DD hh:mm:ss").format('DD/MM/YYYY, h:mm A') }}</div>
+          <div class="added">Date Approved: {{ moment(lead['Transaction']['approved_on'], "YYYY-MM-DD hh:mm:ss").format('DD/MM/YYYY, h:mm A') }}</div>
+          <br/>
+          <div class="right-box">
+            <div [ngClass]="{'label gray': true, 'green': lead['Transaction']['status'] == 2, 'red': lead['Transaction']['status'] == 3 }">{{lead['Transaction']['status']}}</div>
+            <div class="amount">{{lead['Transaction']['amount'] / 100 | currency: lead['Transaction']['currency']: true}}</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <section
+    [hidden]="earnings.length > 0"
+  >
+    <ul>
+      <li>
+        <a>
+          You haven't earned anything yet
+        </a>
+      </li>
+    </ul>
+  </section>
+
+</ion-content>

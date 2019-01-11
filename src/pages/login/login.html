@@ -1,0 +1,83 @@
+<ion-header></ion-header>
+
+<ion-content city-bg>
+  <div class="logo">
+    <img src="assets/imgs/catex-logo.png">
+    <p>The professional referral app</p>
+  </div>
+
+  <div class="alert text-center mb3 bg-silver black rounded" *ngIf="!connection.online">
+    You are currently offline.
+    <span ng-show="!connection.loginVars" class="block">You must login at least once with an internet connection to continue</span>
+  </div>
+
+  <form
+    method="post"
+    novalidate=""
+    (ngSubmit)="loginUser(auth)"
+    name="form.loginForm"
+    #form="ngForm"
+  >
+    <input
+      id="email"
+      type="email"
+      placeholder="Email Address"
+      name="email"
+      [(ngModel)]="auth.email"
+      required
+      [email]="true"
+      #email="ngModel"
+    />
+
+    <div role="alert" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required" class="error">Please enter a value for this field.</div>
+      <div *ngIf="email.errors.email" class="error">This field must be a valid email address.</div>
+    </div>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+      name="password"
+      [(ngModel)]="auth.password"
+      required
+      #password="ngModel"
+    />
+
+    <div role="alert" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div ng-message="required" class="error">Please enter a value for this field.</div>
+    </div>
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+    >
+      Sign In
+    </button>
+
+    <a
+      [navPush]="forgotPasswordPage"
+      class="forgot-link"
+      *ngIf="connection.online"
+    >
+      Forgot Password?
+    </a>
+
+    <div
+      [hidden]="!formError"
+      class="error"
+    >
+      Sign in details not recognised. Please check and try again
+    </div>
+
+  </form>
+
+  <a
+    [navPush]="signupPage"
+    class="transparent-rounded-button"
+  >
+    Register
+  </a>
+
+</ion-content>

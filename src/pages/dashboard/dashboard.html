@@ -1,0 +1,116 @@
+<ion-header>
+  <a
+    class="left"
+    [navPush]="profilePage"
+  >
+    <img [src]="current_user.profile_photo">
+    <div class="name">
+      <div class="name">{{current_user.first_name}}</div>
+      <div class="company">{{current_user.company}}</div>
+    </div>
+  </a>
+
+  <a
+    class="right"
+    [navPush]="settingsPage"
+  >
+  <span
+    class="fa fa-cog"
+  ></span>
+  </a>
+</ion-header>
+
+<ion-content city-bg scrolling=false>
+
+  <div class="logo">
+    <img src="assets/imgs/catex-logo.png">
+  </div>
+
+
+  <small class="alert text-center mb3 bg-silver black rounded block" *ngIf="!connection.online">
+    You are currently offline. For the best experience please connect to the internet. <a
+    href="#/app/offline">More Information</a>
+  </small>
+
+  <div class="out-circle">
+    <div class="inner-circle">
+      <a
+        class="balance"
+        [navPush]="withdrawPage"
+      >
+        <div class="value">{{current_user.current_balance / 100 | currency: 'GBP': true}}</div>
+        <div class="label">Current Balance</div>
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <table>
+      <tr>
+        <td>
+          <a
+            class="badge blue"
+            [navPush]="referralsPage"
+          >
+            {{current_user.lead_count}} Referral<span ng-if="current_user.lead_count != 1">s</span></a>
+          <a
+            class="badge green"
+            [navPush]="referralsPage"
+          >
+            <span>{{balance.winner_count}}</span> Won
+          </a>
+        </td>
+        <td style="text-align: right">
+          <a
+            class="badge black"
+            (click)="playVideo()">
+            Watch Video
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <button
+      ion-button
+      [navPush]="serviceCategoriesPage"
+      class="submit-button"
+    >
+      Add Referral
+    </button>
+  </div>
+
+  <div class="bottom">
+    <a
+      class="transparent-rounded-button small"
+      [navPush]="withdrawPage"
+    >
+      Withdraw Funds
+    </a>
+    <a
+      class="transparent-rounded-button small"
+      [navPush]="referralsPage"
+    >
+      Track Referrals
+    </a>
+  </div>
+
+</ion-content>
+
+<div
+  class="video-modal"
+  [hidden]="!videoOpened"
+>
+  <video
+    controls
+    preload="none"
+    id="explain-video"
+    #videoPlayer
+    type="video/webm"
+  >
+
+  </video>
+  <a
+    class="video-modal-close"
+    (click)="closeVideo()"
+  ></a>
+</div>

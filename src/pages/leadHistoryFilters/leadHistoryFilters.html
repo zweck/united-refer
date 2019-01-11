@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Filter</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.paypalForm"
+    id="paypal-form"
+    #form="ngForm"
+  >
+    <ion-list
+      radio-group
+      [(ngModel)]="status"
+      name="status"
+    >
+      <ion-item>
+        <ion-label>Display ALL</ion-label>
+        <ion-radio value="0"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Pending</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Won</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Lost</ion-label>
+        <ion-radio value="3"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+      style="margin-top: 20px"
+    >
+      Update
+    </button>
+  </form>
+
+</ion-content>

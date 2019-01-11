@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Lead History</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <!--<small class="alert text-center mb3 bg-silver black rounded block" ng-show="!connection.online">-->
+    <!--You are currently offline. For the best experience please connect to the internet. <a-->
+    <!--href="#/app/offline">More Information</a>-->
+  <!--</small>-->
+
+  <section>
+    <ul>
+      <li
+        (click)="openFilters()"
+      >
+        <a>
+          Filter
+          <span *ngIf="status == 1">(Pending)</span>
+          <span *ngIf="status == 2">(Won)</span>
+          <span *ngIf="status == 3">(Lost)</span>
+          <span class="fa fa-chevron-right"></span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <div
+    class="form-label"
+  >
+    total earned
+    <div
+      class="right"
+    >
+      {{current_user.total_earned / 100 | currency: 'GBP': true}}
+    </div>
+  </div>
+
+  <div *ngFor="let lead of earnings">
+    <section *ngIf="lead['LeadStatus']['id'] == status || status == 0">
+      <ul>
+        <li class="item">
+          <div class="name">{{ lead['Lead']['first_name'] }}&nbsp;{{ lead['Lead']['last_name'] }}</div>
+          <div class="company">Service Provider: {{lead['Vendor']['company_name']}}</div>
+          <div class="added">Added: {{ moment(lead['Lead']['date_added'], "YYYY-MM-DD hh:mm:ss").format('DD/MM/YYYY, h:mm A') }}</div>
+          <div class="right-box">
+            <div [ngClass]="{'label': true, 'green': lead['LeadStatus']['id'] == 2, 'red': lead['LeadStatus']['id'] == 3, 'gray': lead['LeadStatus']['id'] == 1 }">{{lead['LeadStatus']['name']}}</div>
+            <div class="amount">{{lead.Lead.user_value / 100 | currency: 'GBP': true}}</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <section
+    [hidden]="earningsCount > 0"
+  >
+    <ul>
+      <li>
+        <a>
+          You haven't earned anything yet
+        </a>
+      </li>
+    </ul>
+  </section>
+
+</ion-content>

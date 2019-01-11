@@ -1,0 +1,66 @@
+page-lead-history{
+  section{
+    margin: 0;
+    margin-bottom: 16px;
+    ul{
+      margin-top: 10px;
+      margin-bottom: 0;
+      li{
+        &.item{
+          display: block;
+          height: auto;
+          position: relative;
+          .right-box{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-align: right;
+            .label{
+              font-size: .6em;
+              font-weight: 700;
+              color: #fff;
+              padding-right: .6rem;
+              padding-left: .6rem;
+              border-radius: 20em;
+              line-height: 19px;
+              text-transform: uppercase;
+              &.green{
+                background-color: 'green'
+              }
+              &.gray{
+                background-color: #aaa
+              }
+              &.red{
+                background-color: 'red'
+              }
+            }
+            .amount{
+              line-height: 1.25;
+              font-size: .75rem;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+  }
+  .name{
+    font-size: .875rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .company{
+    color: #aaa;
+    line-height: 1.25;
+    font-size: .75rem;
+    font-weight: 500;
+  }
+  .added{
+    color: #aaa;
+    line-height: 1.25;
+    font-size: .75rem;
+    font-weight: 500;
+  }
+}

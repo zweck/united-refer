@@ -1,0 +1,280 @@
+html {
+  font-size: 100%;
+}
+
+ion-content[city-bg]{
+  background: linear-gradient(to bottom, rgba(238, 198, 199, .6) 5%, rgba(60, 60, 60, .6) 60%, rgba(20, 20, 20, .9) 100%) no-repeat fixed, url(../assets/imgs/city.png) center;
+  background-size: cover;
+
+  height: 100vh;
+  padding: 1rem;
+}
+
+ion-content:not([city-bg]){
+  background-color: #EFEFEF;
+}
+
+.scroll-content {
+  padding: 1rem;
+}
+
+.error {
+  background: #F9685F;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+  border-radius: .15rem;
+}
+
+form {
+  input, select {
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    outline: 0;
+    border-radius: .15rem !important;
+    height: auto !important;
+    padding: .6rem !important;
+    display: block;
+    line-height: 1.7 !important;
+    width: 100%;
+    vertical-align: middle;
+    margin-bottom: .6rem;
+    border: 0;
+    color: #111;
+    font-size: 14px;
+    background-color: 'white' !important;
+    &::placeholder{
+      color: gray
+    }
+  },
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    option: {
+      background-color: 'white' !important;
+    }
+  }
+}
+
+.transparent-rounded-button {
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  line-height: 1.125rem;
+  border: 1px solid #aaa;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  color: inherit;
+  background-color: rgba(0, 0, 0, .25);
+  border-radius: 20em;
+  text-transform: uppercase;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 9.6px 32px;
+  display: inline-block;
+  &.small{
+    padding: .6rem 1em;
+    font-size: 12px;
+  }
+}
+
+form {
+  text-align: center;
+  min-height: 100%;
+}
+
+.submit-button {
+  font-family: inherit;
+  width: 100%;
+  color: #fff;
+  border-radius: .15rem;
+  background-color: #00d1c1 !important;
+  margin: 0;
+  height: auto;
+  border: 1px solid transparent;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  padding: .96rem 2.4rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: .6rem;
+  &.gray{
+    background-color: #7F8A97 !important;
+  }
+  &.activated, span {
+    background-color: #00d1c1;
+  }
+}
+
+ion-navbar{
+  .toolbar-background{
+    background: #00d1c1;
+    border-bottom-color: #00d1c1;
+  }
+  .ion-title{
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    color: white !important;
+    text-align: center !important;
+  }
+}
+
+.ion-md-arrow-back::before {
+  font-family: FontAwesome;
+  content: "\f104";
+  font-size: 22px;
+  color: white;
+  font-weight: 800;
+  top: -30px
+}
+
+ion-header ion-icon.back-button-icon.icon,
+ion-header span.back-button-text.back-button-text-ios {
+  font-size: 22px;
+  color: white;
+  font-weight: 800;
+}
+
+.back-button{
+  margin-top: -8px;
+}
+
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1); }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    transform: scale3d(1, 1, 1); } }
+
+.loading-wrapper {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-image: url(../assets/imgs/catex-mark-light.svg) !important;
+  background-position: center !important;
+  background-size: contain !important;
+  min-width: 50px ;
+  min-height: 50px ;
+
+  animation-fill-mode: forwards !important;
+  animation-duration: 1000ms !important;
+  animation-timing-function: ease-in-out !important;
+  animation-name: pulse !important;
+  animation-iteration-count: infinite !important;
+
+  .loading-spinner {
+    display: none;
+  }
+  .loading-content {
+    display: none;
+  }
+}
+
+.form-label {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #7F8A97;
+  text-align: left;
+  font-size: 12px;
+  margin-top: 30px;
+  margin-bottom: 9px;
+  position: relative;
+  .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+p {
+  line-height: 1.5;
+  padding-bottom: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: .75rem;
+  font-weight: 500;
+  font-family: "-apple-system","Helvetica Neue",Roboto,"Segoe UI",sans-serif;
+  color: rgb(73, 79, 84);
+  &.center {
+    text-align: center;
+  }
+}
+
+section{
+  margin-bottom: 2rem;
+  & > a{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: .6rem;
+    padding-left: .6rem;
+    display: block;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #494F54;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  & > ul{
+    padding: 0;
+    display: block;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #494F54;
+    list-style-type: none;
+    border-radius: 4px;
+    overflow: hidden;
+
+    li {
+      padding: 0;
+      margin-bottom: 1px;
+      display: flex;
+      align-items: center;
+      padding: .6em;
+      color: #494F54;
+      font-size: 16px;
+      height: 55px;
+      background-color: #fff;
+      position: relative;
+
+      a {
+        color: #494F54;
+        text-decoration: none;
+        width: 100%
+      }
+
+      .fa{
+        position: absolute;
+        top: 20px;
+        right: 10px;
+        color: #aaa;
+      }
+    }
+  }
+}
+
+.center {
+  text-align: center
+}
+
+.white-box {
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+  background-color: white;
+  padding: .6rem;
+  font-size: 16px;
+  color: rgb(73, 79, 84);
+  text-align: center;
+}

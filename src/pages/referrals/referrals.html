@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Track Referrals</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!--<small class="alert text-center mb3 bg-silver black rounded block" ng-show="!connection.online">-->
+    <!--You are currently offline. For the best experience please connect to the internet. <a-->
+    <!--href="#/app/offline">More Information</a>-->
+  <!--</small>-->
+
+  <div class="table">
+    <div class="table-item">
+      <div class="header">{{counter.leads}}</div>
+      <div class="description">Referrals</div>
+    </div>
+    <div class="table-item">
+      <div class="header">{{counter.lost}}</div>
+      <div class="description">Lost</div>
+    </div>
+    <div class="table-item">
+      <div class="header">{{counter.won}}</div>
+      <div class="description">Won</div>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-value" [style.width]="progress"></div>
+  </div>
+
+  <section *ngFor="let lead of referrals">
+    <ul>
+      <li class="item">
+        <div class="name">{{ lead['Lead']['first_name'] }}&nbsp;{{ lead['Lead']['last_name'] }}</div>
+        <div class="company">Service Provider: {{lead['Vendor']['company_name']}}</div>
+        <div class="added">Added: {{ moment(lead['Lead']['date_added'], "YYYY-MM-DD hh:mm:ss").format('DD/MM/YYYY, h:mm A') }}</div>
+        <div class="right-box">
+          <div [ngClass]="{'label': true, 'green': lead['LeadStatus']['id'] == 2, 'red': lead['LeadStatus']['id'] == 3, 'gray': lead['LeadStatus']['id'] == 1 }">{{lead['LeadStatus']['name']}}</div>
+          <div class="amount">{{lead.Lead.user_value / 100 | currency: 'GBP': true}}</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div
+    class="white-box"
+    [hidden]="referrals.length > 0"
+    style="margin-top: 20px"
+  >
+    You currently have no Referrals
+  </div>
+</ion-content>

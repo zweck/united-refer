@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Bank Account Settings</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.paypalForm"
+    id="paypal-form"
+    #form="ngForm"
+  >
+
+    <!--<div class="text-center">-->
+      <!--<img-->
+        <!--class="logo"-->
+        <!--src="assets/imgs/hyperwallet-logo.png"-->
+      <!--/>-->
+    <!--</div>-->
+
+    <p>Please enter your bank account details.</p>
+    <!--<p>If you do not have a HyperWallet account please register here <a href="http://www.hyperwallet.com">www.hyperwallet.com</a>.</p>-->
+
+    <input
+      type="tel"
+      placeholder="Bank ID"
+      [(ngModel)]="user.bank_id"
+      name="bank_id"
+      required
+      #bank_id="ngModel"
+      [pattern]="onlyNumbersRegEx"
+      minlength="6"
+    >
+    <div role="alert" [hidden]="!(bank_id.invalid && (bank_id.dirty || bank_id.touched) && submited)">
+      <div [hidden]="!bank_id.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!bank_id.hasError('pattern')" class="error">Please enter numbers only.</div>
+      <div [hidden]="!bank_id.hasError('minlength')" class="error">Minimum length is 6 numbers.</div>
+    </div>
+
+    <input
+      type="tel"
+      placeholder="Bank account ID"
+      [(ngModel)]="user.bank_account_id"
+      name="bank_account_id"
+      required
+      #bank_account_id="ngModel"
+      [pattern]="onlyNumbersRegEx"
+      minlength="8"
+    >
+    <div role="alert" [hidden]="!(bank_account_id.invalid && (bank_account_id.dirty || bank_account_id.touched) && submited)">
+      <div [hidden]="!bank_account_id.hasError('required')" class="error">Please enter a value.</div>
+      <div [hidden]="!bank_account_id.hasError('pattern')" class="error">Please enter numbers only.</div>
+      <div [hidden]="!bank_account_id.hasError('minlength')" class="error">Minimum length is 8 numbers.</div>
+    </div>
+
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+      style="margin-top: 20px"
+    >
+      Save
+    </button>
+  </form>
+
+</ion-content>

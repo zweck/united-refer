@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <div class="ion-title">Select Date Range</div>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <form
+    (ngSubmit)="submit(form)"
+    novalidate
+    name="form.paypalForm"
+    id="paypal-form"
+    #form="ngForm"
+  >
+    <ion-list
+      radio-group
+      [(ngModel)]="date_range_id"
+      name="date_range_id"
+    >
+      <ion-item>
+        <ion-label>This Week</ion-label>
+        <ion-radio value="1"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>This Month</ion-label>
+        <ion-radio value="2"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>3 Months</ion-label>
+        <ion-radio value="4"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>This Year</ion-label>
+        <ion-radio value="3"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>ALL Time</ion-label>
+        <ion-radio value="5"></ion-radio>
+      </ion-item>
+    </ion-list>
+
+    <button
+      class="submit-button"
+      type="submit"
+      ng-disabled="!connection.online"
+      style="margin-top: 20px"
+    >
+      Update
+    </button>
+  </form>
+
+</ion-content>
