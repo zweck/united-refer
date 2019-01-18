@@ -7,6 +7,7 @@
   "scripts": {
     "cordova:ios": "ionic cordova run ios -- --buildFlag='-UseModernBuildSystem=0'",
     "cordova:browser": "ionic cordova run browser",
+    "cordova:android": "ionic cordova run android",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
