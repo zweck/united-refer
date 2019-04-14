@@ -21,7 +21,7 @@ export class ReferralDetailsPage {
   postcodeRegEx = /^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i;
   form: any;
   submited = false;
-  additional = [];
+  additional_information = [];
   leadThanksPage = LeadThanksPage;
 
   vendor;
@@ -40,7 +40,7 @@ export class ReferralDetailsPage {
     town: '',
     county: '',
     post_code: '',
-    additional: ''
+    additional_information: ''
   };
 
   constructor(
@@ -64,7 +64,7 @@ export class ReferralDetailsPage {
     this.api.getVendorQuestions(this.vendor['Vendor'][0]['id'])
       .then(response => {
         if (!response) {
-          this.additional = [];
+          this.additional_information = [];
         } else {
           if (response['error']['code'] != 0) {
             // const alert = this.alertCtrl.create({
@@ -75,9 +75,9 @@ export class ReferralDetailsPage {
             // alert.present();
             // this.navCtrl.pop();
           } else {
-            this.additional = response['response'];
-            this.additional.forEach(item => {
-              item.additional = JSON.parse(item.additional)
+            this.additional_information = response['response'];
+            this.additional_information.forEach(item => {
+              item.additional_information = JSON.parse(item.additional_information)
             })
           }
         }
