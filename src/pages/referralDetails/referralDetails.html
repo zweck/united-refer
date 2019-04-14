@@ -76,10 +76,9 @@
     <input
       type="tel"
       placeholder="Mobile Number*"
-      [(ngModel)]="lead.mobile"
+      [(ngModel)]="lead.mobile_number"
       name="mobile"
       required
-      [pattern]="phoneRegEx"
       #mobile="ngModel"
     >
     <div role="alert" [hidden]="!(mobile.invalid && (mobile.dirty || mobile.touched || submited))">
@@ -90,10 +89,9 @@
     <input
       type="tel"
       placeholder="Phone Number*"
-      [(ngModel)]="lead.phone"
+      [(ngModel)]="lead.phone_number"
       name="phone"
       required
-      [pattern]="phoneRegEx"
       #phone="ngModel"
     >
     <div role="alert" [hidden]="!(phone.invalid && (phone.dirty || phone.touched || submited))">
@@ -109,7 +107,6 @@
       [(ngModel)]="lead.address1"
       name="address1"
       required
-      [pattern]="onlyLettersRegEx"
       #address1="ngModel"
     >
     <div role="alert" [hidden]="!(address1.invalid && (address1.dirty || address1.touched || submited))">
@@ -145,8 +142,8 @@
 
     <input
       type="text"
-      placeholder="Country"
-      [(ngModel)]="lead.country"
+      placeholder="County"
+      [(ngModel)]="lead.county"
       name="country"
       required
       [pattern]="onlyLettersRegEx"
@@ -160,7 +157,7 @@
     <input
       type="text"
       placeholder="Postcode*"
-      [(ngModel)]="lead.postcode"
+      [(ngModel)]="lead.post_code"
       name="postcode"
       required
       [pattern]="postcodeRegEx"
