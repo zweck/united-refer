@@ -16,6 +16,7 @@ import 'rxjs/Rx';
 })
 export class ReferralDetailsPage {
   onlyLettersRegEx = /^[a-zA-Z ]+$/;
+  onlyNumbersRegEx = /^\d+$/;
   phoneRegEx = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
   emailRegEx = /^.*@.*\..*$/;
   postcodeRegEx = /^(GIR ?0AA|[A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i;
@@ -40,6 +41,7 @@ export class ReferralDetailsPage {
     town: '',
     county: '',
     post_code: '',
+    budget: '',
     additional_information: ''
   };
 

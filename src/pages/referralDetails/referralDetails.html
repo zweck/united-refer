@@ -78,6 +78,7 @@
       placeholder="Mobile Number*"
       [(ngModel)]="lead.mobile_number"
       name="mobile"
+      [pattern]="onlyNumbersRegEx"
       required
       #mobile="ngModel"
     >
@@ -92,6 +93,7 @@
       [(ngModel)]="lead.phone_number"
       name="phone"
       required
+      [pattern]="onlyNumbersRegEx"
       #phone="ngModel"
     >
     <div role="alert" [hidden]="!(phone.invalid && (phone.dirty || phone.touched || submited))">
@@ -99,6 +101,15 @@
       <div [hidden]="!phone.hasError('pattern')" class="error">Please enter a valid phone number.</div>
     </div>
 
+    <input
+      type="text"
+      placeholder="Budget (GBP)"
+      [(ngModel)]="lead.budget"
+      name="budget"
+      [pattern]="onlyNumbersRegEx"
+      required
+      #budget="ngModel"
+    >
     <div class="form-label">Address info</div>
 
     <input
