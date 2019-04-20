@@ -67,13 +67,13 @@ export class ReferralDetailsPage {
           this.additional_information = [];
         } else {
           if (response['error']['code'] != 0) {
-            // const alert = this.alertCtrl.create({
-            //   title: 'Error.',
-            //   subTitle: response['error']['message'],
-            //   buttons: ['Ok']
-            // });
-            // alert.present();
-            // this.navCtrl.pop();
+            const alert = this.alertCtrl.create({
+              title: 'Error.',
+              subTitle: response['error']['message'],
+              buttons: ['Ok']
+            });
+            alert.present();
+            this.navCtrl.pop();
           } else {
             this.additional_information = response['response'];
             this.additional_information.forEach(item => {
@@ -84,7 +84,7 @@ export class ReferralDetailsPage {
       });
 
 
-    // this.navCtrl.push(LeadThanksPage)
+    this.navCtrl.push(LeadThanksPage)
   }
 
   submit(form) {
@@ -110,7 +110,7 @@ export class ReferralDetailsPage {
       content: 'Connecting to the server...'
     });
 
-    let params = (<any>Object).entries(this.lead).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+    let params = (<any>Object).entries(this.lead).map(([key, value]) => `data[Lead][${key}]=${encodeURIComponent(value)}`).join('&');
 
     loader.present();
 
