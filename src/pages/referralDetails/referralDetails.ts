@@ -29,6 +29,7 @@ export class ReferralDetailsPage {
 
   lead = {
     vendor_id: '',
+    vendor_category_id: '',
     user_id: '',
     first_name: '',
     last_name: '',
@@ -61,6 +62,7 @@ export class ReferralDetailsPage {
   ionViewDidLoad(){
     this.vendor = this.navParams.get('vendor');
     this.lead.vendor_id = this.vendor['Vendor'][0]['id'];
+    this.lead.vendor_category_id = this.vendor['VendorCategory']['id'];
     this.lead.user_id = JSON.parse(localStorage.getItem('User'))['id'];
 
     this.api.getVendorQuestions(this.vendor['Vendor'][0]['id'])
@@ -112,12 +114,16 @@ export class ReferralDetailsPage {
       content: 'Connecting to the server...'
     });
 
-    let params = (<any>Object).entries(this.lead).map(([key, value]) => `data[Lead][${key}]=${encodeURIComponent(value)}`).join('&');
+    let params = (<any>Object).entries(this.lead).map(
+        ([key, value]) => `data[Lead][${key}]=${encodeURIComponent(value)}`).join('&');
 
     loader.present();
 
     this.api.postLead(params)
-      .map((res:Response) => res.json())
+      .map((res:Response) => {
+        console.log(res)
+        return res.json()
+      })
       .subscribe(
         response => {
           if (response.error.code != 0) {
