@@ -20,6 +20,9 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+
+    <hook type="after_build" src="scripts/afterBuild.js"/>
+
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
@@ -57,8 +60,10 @@
         <splash height="2732" src="resources/ios/splash/Default@2x~iphone.png" width="2732" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
+
     <allow-navigation href="http://192.168.0.20:8100" />
     <allow-navigation href="http://192.168.0.26:8101" />
+
     <platform name="android">
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
@@ -79,6 +84,7 @@
         <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
+
     <allow-navigation href="http://localhost:8080/*" />
     <allow-navigation href="http://192.168.0.26:8100" />
     <allow-navigation href="http://192.168.0.33:8101" />
