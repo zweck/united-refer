@@ -88,7 +88,7 @@ export class ReferralDetailsPage {
       });
 
 
-    this.navCtrl.push(LeadThanksPage)
+    // this.navCtrl.push(LeadThanksPage)
   }
 
   submit(form) {
