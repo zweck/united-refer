@@ -22,15 +22,13 @@
     id="register-form"
     #form="ngForm"
   >
-    <button
-      type="button"
-      class="profile-photo"
-      (click)="showImageSourceSelection()"
-    >
-      <img
-        [src]="user.profile_photo"
-      />
-    </button>
+    <img
+      [src]="user.profile_photo"
+    />
+    <input
+      type="file"
+      id="avatar" name="avatar"
+      accept="image/png, image/jpeg">
 
     <ion-row>
       <ion-col col-6 style="padding-left: 0">

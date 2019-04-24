@@ -11,7 +11,7 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
-    "ionic:build": "ionic-app-scripts build",
+    "ionic:build": "ionic-app-scripts build && ./scripts/afterBuild.js",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
