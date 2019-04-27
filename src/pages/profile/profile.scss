@@ -1,4 +1,16 @@
 page-profile {
+
+  .avatar-wrapper {
+    position: relative;
+
+    #avatar-upload {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
   .scroll-content {
     padding: 15px;
     background-color: #EFEFEF;

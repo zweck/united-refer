@@ -22,13 +22,17 @@
     id="register-form"
     #form="ngForm"
   >
-    <img
-      [src]="user.profile_photo"
-    />
-    <input
-      type="file"
-      id="avatar" name="avatar"
-      accept="image/png, image/jpeg">
+    <div class="avatar-wrapper">
+      <img
+        [src]="user.profile_photo"
+      />
+      <input
+        (change)="uploadImage($event)"
+        type="file"
+        id="avatar-upload"
+        name="avatar"
+        accept="image/png, image/jpeg">
+    </div>
 
     <ion-row>
       <ion-col col-6 style="padding-left: 0">

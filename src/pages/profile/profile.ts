@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { GlobalStorage } from '../../services/globalstorage/globalstorage';
@@ -135,84 +136,33 @@ export class ProfilePage {
     }
   }
 
-  public showImageSourceSelection() {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [{
-        text: 'Load from gallery',
-        handler: () => {this.loadImage(this.camera.PictureSourceType.PHOTOLIBRARY);}
-      },{
-        text: 'Take a photo',
-        handler: () => {this.loadImage(this.camera.PictureSourceType.CAMERA);}
-      },{
-        text: 'Cancel',
-        role: 'cancel'
-      }]
-    });
-    actionSheet.present();
-  }
-
-  private loadImage(sourceType:number){
-    var options = {
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true,
-      targetWidth: 300,
-      targetHeight: 300
-    };
-
-    // Get the data of an image
-    this.camera.getPicture(options).then((imagePath) => {
-      // Special handling for Android library
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-        this.filePath.resolveNativePath(imagePath)
-          .then(filePath => {
-            let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-            let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-            this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-          });
-      } else {
-        var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-      }
-    }, (err) => {
-      this.presentToast('Error while selecting image.');
-    });
-  }
-
-  public uploadImage() {
-    // Destination URL
-    var url = `${this.storage.baseUrl}/uploadAvatar?${ this.storage.getAuthHelper() }`;
-
-    // File for Upload
-    var targetPath = this.pathForImage(this.lastImage);
-
-    // File name only
-    var filename = this.lastImage;
-
-    var options = {
-      fileKey: "file",
-      fileName: filename,
-      chunkedMode: false,
-      mimeType: "multipart/form-data",
-      params : {'fileName': filename}
-    };
-
-    const fileTransfer = this.transfer.create();
-
-    let loading = this.loadingCtrl.create({
-      content: 'Uploading...',
+  public uploadImage(e) {
+    const file = e.target.files[0];
+    if (!file) return false;
+    const loading = this.loadingCtrl.create({
+        content: 'Uploading...',
     });
     loading.present();
-
-    fileTransfer.upload(targetPath, url, options).then(data => {
-      loading.dismissAll();
-      this.user.profile_photo = JSON.parse(data['response'])['response']['avatar'];
-      localStorage.setItem('User', JSON.stringify(this.user));
-    }, err => {
-      loading.dismissAll()
-      this.presentToast('Error while uploading file.');
-    });
+    const reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = () => {
+        // Destination URL
+        const data = new FormData();
+        data.set('file', file, file.name);
+        axios.post(
+          `${this.storage.baseUrl}/uploadAvatar?${ this.storage.getAuthHelper() }`,
+          data
+        ).then(res => {
+            this.user.profile_photo = res.data.response.avatar;
+            localStorage.setItem('User', JSON.stringify(this.user));
+            loading.dismissAll();
+        });
+    };
+    reader.onerror = function (error) {
+        console.log('Error: ', error);
+        loading.dismissAll();
+        alert('Error while uploading file.');
+    };
   }
 
   // Create a new name for the image
@@ -221,16 +171,6 @@ export class ProfilePage {
       n = d.getTime(),
       newFileName =  n + ".jpg";
     return newFileName;
-  }
-
-// Copy the image to a local folder
-  private copyFileToLocalDir(namePath, currentName, newFileName) {
-    this.file.copyFile(namePath, currentName, window['cordova']['file']['dataDirectory'], newFileName).then(success => {
-      this.lastImage = newFileName;
-      this.uploadImage();
-    }, error => {
-      this.presentToast('Error while storing file.');
-    });
   }
 
   private presentToast(text) {
