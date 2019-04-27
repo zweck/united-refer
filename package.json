@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "cordova:ios": "ionic cordova run ios -- --buildFlag='-UseModernBuildSystem=0'",
+    "cordova:build:browser": "ionic cordova build browser",
     "cordova:browser": "ionic cordova run browser",
     "cordova:android": "ionic cordova run android",
     "clean": "ionic-app-scripts clean",

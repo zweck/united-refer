@@ -26592,6 +26592,17 @@ page-paypal-settings .toggle ion-toggle {
   right: 1px;
 }
 
+page-profile .avatar-wrapper {
+  position: relative;
+}
+
+page-profile .avatar-wrapper #avatar-upload {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
 page-profile .scroll-content {
   padding: 15px;
   background-color: #EFEFEF;
