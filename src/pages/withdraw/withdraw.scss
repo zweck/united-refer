@@ -13,18 +13,18 @@ page-withdraw {
       padding: .8rem 2rem;
       text-align: center;
       &.green {
-        color: #00d1c1 !important;
+        color: map-get($colors, "primary") !important;
       }
     }
 
     .outer-circle {
       display: inline-block;
-      border: 1px solid #00d1c1;
+      border: 1px solid map-get($colors, "primary");
       border-radius: 20em;
       padding: .2em .2em .16em .2em;
       width: 60%;
       .inner-circle {
-        border: 3px dashed #00d1c1;
+        border: 3px dashed map-get($colors, "primary");
         border-radius: 20em;
         padding: 1rem 2rem;
         height: 100%;

@@ -38,7 +38,7 @@ page-lead-history-filters{
       border: 6px solid #aaa !important;
       border-radius: 30px;
       &.radio-checked {
-        border-color: #00d1c1 !important;
+        border-color: map-get($colors, "primary") !important;
       }
       .radio-inner {
         display: none;

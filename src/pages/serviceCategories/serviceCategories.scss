@@ -135,7 +135,7 @@ page-service-categories {
               color: #494F54;
               font-weight: 500;
               &.selected{
-                background-color: #00d1c1;
+                background-color: map-get($colors, "primary");
                 color: white;
               }
             }
@@ -166,7 +166,7 @@ page-service-categories {
 
   .bottom-button {
     color: #494F54;
-    background-color: #00d1c1;
+    background-color: map-get($colors, "primary");
     color: #fff;
     padding: .96rem 2.4rem;
     font-size: 1rem;

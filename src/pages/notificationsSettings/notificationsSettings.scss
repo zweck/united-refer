@@ -38,7 +38,7 @@ page-notifications-settings{
       height: 24px !important;
       border: 6px solid #aaa !important;
       &.radio-checked {
-        border-color: #00d1c1 !important;
+        border-color: map-get($colors, "primary") !important;
       }
       .radio-inner {
         display: none;

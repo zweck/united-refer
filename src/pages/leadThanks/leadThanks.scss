@@ -16,7 +16,7 @@ page-lead-thanks {
     }
 
     .header1{
-      color: #00d1c1;
+      color: map-get($colors, "primary");
       text-align: center;
       font-size: 2.4rem;
       margin-bottom: .4rem;
@@ -37,7 +37,7 @@ page-lead-thanks {
       text-align: center;
       .green {
         text-decoration: underline;
-        color: #00d1c1;
+        color: map-get($colors, "primary");
       }
     }
     .header3 {
