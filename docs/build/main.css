@@ -25520,7 +25520,7 @@ ion-content[city-bg] {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(5%, rgba(238, 198, 199, 0.6)), color-stop(60%, rgba(60, 60, 60, 0.6)), to(rgba(20, 20, 20, 0.9))) no-repeat fixed, url(../assets/imgs/city.png) center;
   background: linear-gradient(to bottom, rgba(238, 198, 199, 0.6) 5%, rgba(60, 60, 60, 0.6) 60%, rgba(20, 20, 20, 0.9) 100%) no-repeat fixed, url(../assets/imgs/city.png) center;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   padding: 1rem;
 }
 
@@ -25670,6 +25670,13 @@ ion-header span.back-button-text.back-button-text-ios {
 
 .back-button {
   margin-top: -8px;
+}
+
+.back-button.show-back-button {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
 }
 
 @-webkit-keyframes pulse {
@@ -25952,7 +25959,6 @@ page-dashboard .scroll-content {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  padding-bottom: 4.25em;
   font-size: 16px;
 }
 
