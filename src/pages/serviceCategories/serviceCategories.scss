@@ -6,7 +6,7 @@ page-service-categories {
   }
 
   .search-container {
-    background-color: rgb(10, 156, 145);
+    background-color: map-get($colors, "primary-accent");
     padding: 10px;
     position: relative;
     .fa {
