@@ -297,7 +297,7 @@ module.exports.metadata =
     "cordova-plugin-camera": "2.4.1",
     "cordova-plugin-file": "4.3.3",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-filepath": "1.5.1",
+    "cordova-plugin-filepath": "1.5.5",
     "cordova-plugin-statusbar": "2.4.2"
 }
 // BOTTOM OF METADATA
