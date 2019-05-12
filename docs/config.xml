@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.michael.refersquare" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ReferSquare</name>
+    <description>An awesome Ionic/Cordova app.</description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <hook src="scripts/afterBuild.js" type="after_build" />
+    <allow-navigation href="http://192.168.0.20:8100" />
+    <allow-navigation href="http://192.168.0.26:8101" />
+    <allow-navigation href="http://192.168.0.26:8100" />
+    <allow-navigation href="http://192.168.0.33:8101" />
+    <allow-navigation href="http://192.168.0.30:8101" />
+    <allow-navigation href="http://192.168.0.30:8100" />
+    <allow-navigation href="http://192.168.0.23:8101" />
+    <allow-navigation href="http://192.168.0.24:8101" />
+    <allow-navigation href="http://192.168.0.24:8100" />
+    <allow-navigation href="http://192.168.0.21:8102" />
+    <allow-navigation href="http://192.168.0.21:8101" />
+    <allow-navigation href="http://192.168.0.32:8100" />
+    <allow-navigation href="http://192.168.0.22:8100" />
+    <allow-navigation href="http://192.168.0.21:8100" />
+    <allow-navigation href="http://localhost:8080/*" />
+    <allow-navigation href="http://192.168.0.39:8100" />
+    <allow-navigation href="http://192.168.0.130:8100" />
+    <allow-navigation href="http://192.168.0.40:8100" />
+    <allow-navigation href="http://192.168.0.37:8100" />
+    <allow-navigation href="http://192.168.0.33:8100" />
+    <allow-navigation href="http://192.168.0.26:8102" />
+    <allow-navigation href="http://192.168.0.27:8101" />
+    <allow-navigation href="http://192.168.0.41:8100" />
+    <allow-navigation href="http://192.168.3.184:8100" />
+    <preference name="ScrollEnabled" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="FadeSplashScreenDuration" value="300" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
+</widget>
