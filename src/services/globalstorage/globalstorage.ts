@@ -10,8 +10,7 @@ export class GlobalStorage {
     type: ""
   };
   public primaryDomain: string = 'http://ur.zweck.software:4000/';
-  // public primaryDomain: string = 'http://refersquare-dev.businessapps.co.uk';
-  public baseUrl: string = `${this.primaryDomain}/api`;
+  public baseUrl: string = `${this.primaryDomain}api`;
   public user: any;
 
   public authHelper = () => {

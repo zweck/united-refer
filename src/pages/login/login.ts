@@ -128,13 +128,11 @@ export class LoginPage {
           this.api.getFavourites();
           this.api.getUser();
           this.api.getLeadCount();
-          // this.api.getWithdraw();
           // this.api.getVendorQuestions();
           this.api.getFAQ();
           this.api.getTOS();
           if (this.storage.user.id > 0) {
             this.api.getEarningHistory(this.storage.user.id);
-            this.api.getWithdrawalHistory(this.storage.user.id);
             this.api.getLeadHistory({user_id: this.storage.user.id, date_range: 5});
           }
           loader.dismiss();
